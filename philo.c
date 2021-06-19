@@ -17,6 +17,7 @@ int main(int ac, char **av)
 {
 	t_params	params;
 	int			i;
+	pthread_t id;
 
 	if (ac < 5 || ac > 6)
 	{
@@ -25,7 +26,7 @@ int main(int ac, char **av)
 	}
 	ft_init(ac, av, &params);
 	while (i < params.number_of_philosophers)
-	
+		pthread_create(id, );
 
 
 }
