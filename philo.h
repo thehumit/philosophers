@@ -6,68 +6,73 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-typedef struct	s_params
-{
-	int	number_of_philosophers;
-	t_philo	*philos;
-	t_time	time_params;
-
-}				t_params;
-
+# include <pthread.h>
+# include <sys/time.h>
 
 typedef struct	s_time
 {
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	current_time;
+	int	to_die;
+	int	to_eat;
+	int	to_sleep;
+	int	now;
 }				t_time;
 
 typedef struct	s_fork
 {
-	int	l_fork;
-	int	r_fork;
+	int	left;
+	int	right;
 }				t_fork;
 
 typedef struct	s_philo
 {
-	int eat_flag;
-	int	max_meals;
-	
+	int		position;
+	int		eat_flag;
+	t_time	time;
+	t_fork	fork;
 }				t_philo;
 
+typedef struct	s_params
+{
+	int	number_of_philosophers;
+	int	max_meals;
+	t_philo	*philos;
+	t_time	time;
+}				t_params;
 
 /////////////////////////////////////////////
 
-typedef struct		s_philo
-{
-	int				position;
-	int				is_eating;
-	uint64_t		limit;
-	uint64_t		last_eat;
-	int				lfork;
-	int				rfork;
-	int				eat_count;
-	struct s_state	*state;
-	pthread_mutex_t	mutex;
-	pthread_mutex_t	eat_m;
-}					t_philo;
+// typedef struct		s_philo
+// {
+// 	int				position;
+// 	int				is_eating;
+// 	uint64_t		limit;
+// 	uint64_t		last_eat;
+// 	int				lfork;
+// 	int				rfork;
+// 	int				eat_count;
+// 	struct s_state	*state;
+// 	pthread_mutex_t	mutex;
+// 	pthread_mutex_t	eat_m;
+// }					t_philo;
 
-typedef struct		s_state
-{
-	int				amount;
-	uint64_t		time_to_die;
-	uint64_t		time_to_eat;
-	uint64_t		time_to_sleep;
-	int				must_eat_count;
+// typedef struct		s_state
+// {
+// 	int				amount;
+// 	uint64_t		time_to_die;
+// 	uint64_t		time_to_eat;
+// 	uint64_t		time_to_sleep;
+// 	int				must_eat_count;
 
-	uint64_t		start;
+// 	uint64_t		start;
 
-	t_philo			*philos;
-	pthread_mutex_t	*forks_m;
-	pthread_mutex_t	write_m;
-	pthread_mutex_t	somebody_dead_m;
-}					t_state;
+// 	t_philo			*philos;
+// 	pthread_mutex_t	*forks_m;
+// 	pthread_mutex_t	write_m;
+// 	pthread_mutex_t	somebody_dead_m;
+// }					t_state;
+
+size_t	ft_strlen(const char *str);
+int	ft_atoi(const char *str);
+uint64_t	get_time(void);
 
 #endif

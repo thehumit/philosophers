@@ -1,12 +1,12 @@
 NAME		=	philo
 
 SRCS	=	philo.c \
-			handlers.c \
+			handlers.c
 
 
 OBJS			= $(SRCS:.c=.o)
 
-CC				= gcc	-Wall -Werror -Wextra
+CC				= gcc	#-Wall -Werror -Wextra
 RM				= rm -f
 
 NAME			= philo
