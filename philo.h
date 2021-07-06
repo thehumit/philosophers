@@ -23,21 +23,25 @@ typedef struct	s_fork
 	int	right;
 }				t_fork;
 
+typedef struct	s_params
+{
+	int	number_of_philosophers;
+	int	max_meals;
+	pthread_mutex_t *forks;
+	struct s_philo	*philos;
+	t_time	time;
+}				t_params;
+
 typedef struct	s_philo
 {
 	int		position;
 	int		eat_flag;
 	t_time	time;
 	t_fork	fork;
+	t_params	*ptr_to_params;
 }				t_philo;
 
-typedef struct	s_params
-{
-	int	number_of_philosophers;
-	int	max_meals;
-	t_philo	*philos;
-	t_time	time;
-}				t_params;
+
 
 /////////////////////////////////////////////
 

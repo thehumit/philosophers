@@ -6,7 +6,7 @@ SRCS	=	philo.c \
 
 OBJS			= $(SRCS:.c=.o)
 
-CC				= gcc	#-Wall -Werror -Wextra
+CC				= gcc	#-fsanitize=address#-Wall -Werror -Wextra
 RM				= rm -f
 
 NAME			= philo
