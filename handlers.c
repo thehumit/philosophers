@@ -1,11 +1,25 @@
 #include "philo.h"
 
-uint64_t	get_time(void)
+void	my_usleep(unsigned long long t)
+{
+	uint64_t	begin;
+	uint64_t	end;
+
+	begin = get_time(0);
+	while (1)
+	{
+		if (get_time(0) - begin > t)
+			return ;
+		usleep(100);
+	}
+}
+
+uint64_t	get_time(uint64_t time)
 {
 	static struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
+	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000) - time);
 }
 
 int	ft_atoi(const char *str)
@@ -44,4 +58,3 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-
